@@ -175,12 +175,13 @@ img{display:block}
 .badge__core{position:relative;width:88px;height:88px;border-radius:50%;display:grid;place-items:center;
   background:radial-gradient(circle at 50% 55%,#3a078f 0 26%,#8a2fd6 44%,#e05be8 62%,#d440d7 74%,#7a1fc9 100%);
   font-family:var(--display);font-weight:600;font-size:16px;line-height:.93;text-transform:uppercase;text-align:center}
-.badge__core svg{position:absolute;left:11px;bottom:9px;width:27px;animation:nudge-l 1.4s ease-in-out infinite}
+.badge__core{padding-bottom:16px}
+.badge__core svg{position:absolute;left:17px;bottom:8px;width:19px;animation:nudge-l 1.4s ease-in-out infinite}
 @keyframes nudge-ul{0%,100%{transform:scale(-1,-1)}50%{transform:scale(-1,-1) translate(3px,3px)}}
 @keyframes nudge-l{0%,100%{transform:scaleX(-1)}50%{transform:scaleX(-1) translate(3px,3px)}}
 @keyframes nudge{50%{transform:translate(3px,3px)}}
 @keyframes spin{to{rotate:360deg}}
-@media (max-width:640px){.badge{right:-6px;bottom:-58px;width:104px;height:104px}.badge__core{width:74px;height:74px;font-size:14px}.badge__core svg{left:7px;bottom:auto;top:6px;width:22px;animation-name:nudge-ul}.ticket{margin-bottom:60px}}
+@media (max-width:640px){.badge{right:-6px;bottom:-58px;width:104px;height:104px}.badge__core{width:74px;height:74px;font-size:13px;padding:15px 0 0}.badge__core svg{left:13px;bottom:auto;top:7px;width:16px;animation-name:nudge-ul}.ticket{margin-bottom:60px}}
 
 /* ---------- бегущая строка ---------- */
 .ticker{position:relative;z-index:2;margin:74px 0 0;overflow:hidden;background:var(--lime);color:#000;transform:rotate(-1.6deg) scale(1.03);padding:9px 0}
@@ -218,12 +219,21 @@ img{display:block}
 .tag--btn svg{position:absolute;right:20px;top:50%;width:26px;translate:0 -50%;transition:transform .4s var(--spring)}
 .tag--btn:hover svg{transform:translateY(5px) rotate(20deg)}
 @media (max-width:720px){
-  .about__panel{grid-template-columns:1fr;padding:30px 22px 28px;margin-top:-30px}
+  .about__panel{grid-template-columns:minmax(0,1fr);padding:30px 22px 28px;margin-top:-30px}
   .about__panel::before{display:none}
   .gball:nth-child(1){left:0;top:44%}.gball:nth-child(2){left:20%;top:52%}.gball:nth-child(3){left:6%;top:6%}.gball:nth-child(4){left:28%;top:14%}
   .sun{width:54%;top:6%}
 }
 
+@media (max-width:380px){
+  .stage .ask{font-size:3.55em}
+  .about__panel{padding:26px 16px 22px}
+  .tag--btn{height:54px;font-size:16px;padding:0 50px 0 20px;max-width:100%}
+  .tag--btn svg{right:16px;width:22px}
+  .sun{width:50%;min-width:150px}
+  .gball{min-width:84px}
+  .ticket p{font-size:1.4rem}
+}
 /* ---------- заголовки разделов ---------- */
 .bar{position:relative;z-index:2;background:var(--panel);border-radius:var(--r);height:94px;display:grid;place-items:center;overflow:hidden}
 .slice{position:relative;font-size:clamp(2.6rem,6.8vw,4.24rem);color:transparent}
@@ -351,7 +361,7 @@ img{display:block}
 .field label{font-family:var(--display);font-weight:600;text-transform:uppercase;font-size:15px;color:var(--soft)}
 .field input,.field textarea{width:100%;background:var(--bg);color:var(--ink);border:1.5px solid transparent;border-radius:16px;padding:13px 16px;font:400 17px/1.3 var(--body);transition:border-color .25s,box-shadow .25s}
 .field textarea{min-height:96px;resize:vertical}
-.field input::placeholder,.field textarea::placeholder{color:var(--ghost)}
+.field input::placeholder,.field textarea::placeholder{color:#737373;opacity:1}
 .field input:focus,.field textarea:focus{outline:none;border-color:var(--lime);box-shadow:0 0 0 4px rgba(89,255,0,.15)}
 .field input.bad{border-color:var(--magenta);animation:shake .5s}
 .hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
@@ -393,6 +403,8 @@ img{display:block}
 .foot__big span:hover{transform:translateY(-.12em) rotate(-6deg);color:var(--lime)}
 .foot__meta{margin-top:clamp(34px,7vw,84px);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;color:var(--muted);font-size:14px}
 .foot__meta a:hover{color:var(--lime)}
+.foot__meta a,.foot__meta .linkbtn{padding-block:10px}
+.agree .linkbtn{padding-block:6px}
 
 /* ---------- появление, курсор, искры ---------- */
 .js [data-reveal]{transition:opacity .8s var(--ease),transform .9s var(--spring);transition-delay:var(--dl,0ms)}
@@ -405,6 +417,11 @@ img{display:block}
 .cursor-ring.is-on{width:74px;height:74px;margin:-37px 0 0 -37px;background:var(--lime)}
 .cursor-ring.is-down{width:26px;height:26px;margin:-13px 0 0 -13px}
 .spark{position:fixed;z-index:99;pointer-events:none;width:14px;height:14px;margin:-7px 0 0 -7px;clip-path:polygon(50% 0,62% 38%,100% 50%,62% 62%,50% 100%,38% 62%,0 50%,38% 38%)}
+.cookie{position:fixed;z-index:60;left:max(16px,2.8vw);bottom:calc(16px + env(safe-area-inset-bottom,0px));width:min(360px,calc(100vw - 32px));background:var(--panel-2);border-radius:var(--r);padding:16px 16px 14px 18px;display:grid;gap:12px;font-size:14px;line-height:1.35;color:var(--soft);box-shadow:0 14px 50px rgba(0,0,0,.6);transform:translateY(20px) rotate(-1.5deg);opacity:0;transition:transform .5s var(--spring),opacity .3s}
+.cookie.on{transform:none;opacity:1}
+.cookie__row{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.cookie .btn{height:32px;font-size:16px;padding:0 18px}
+@media (max-width:720px){.cookie{bottom:calc(78px + env(safe-area-inset-bottom,0px));left:16px}}
 .toast{position:fixed;z-index:101;left:50%;bottom:calc(80px + env(safe-area-inset-bottom,0px));translate:-50% 30px;background:var(--lime);color:#000;font-weight:700;padding:12px 20px;border-radius:30px;opacity:0;pointer-events:none;transition:opacity .3s,translate .4s var(--spring);white-space:nowrap}
 .toast.on{opacity:1;translate:-50% 0}
 [id]{scroll-margin-top:96px}
@@ -415,8 +432,21 @@ img{display:block}
   .cursor,.cursor-ring{display:none}
 }
 </style>
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+    (function(m,e,t,r,i,k,a){
+        m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+        m[i].l=1*new Date();
+        for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+    })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=113524444', 'ym');
+
+    ym(113524444, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
+</script>
+<!-- /Yandex.Metrika counter -->
 </head>
 <body>
+<noscript><div><img src="https://mc.yandex.ru/watch/113524444" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
 
 
 <div class="gridbg" aria-hidden="true"></div>
@@ -611,9 +641,9 @@ img{display:block}
         </div>
       </fieldset>
       <div class="fields">
-        <div class="field"><label for="b-name">Как вас зовут</label><input id="b-name" name="name" type="text" autocomplete="name" maxlength="80" placeholder="Имя или компания"></div>
-        <div class="field"><label for="b-contact">Куда ответить</label><input id="b-contact" name="contact" type="text" maxlength="120" placeholder="Telegram, почта или телефон" required></div>
-        <div class="field field--wide"><label for="b-msg">Пара слов о задаче</label><textarea id="b-msg" name="message" maxlength="1500" placeholder="Что за продукт, что уже есть, что должно получиться"></textarea></div>
+        <div class="field"><label for="b-name">Как вас зовут</label><input id="b-name" class="ym-disable-keys" name="name" type="text" autocomplete="name" maxlength="80" placeholder="Имя или компания"></div>
+        <div class="field"><label for="b-contact">Куда ответить</label><input id="b-contact" class="ym-disable-keys" name="contact" type="text" maxlength="120" placeholder="Telegram, почта или телефон" required></div>
+        <div class="field field--wide"><label for="b-msg">Пара слов о задаче</label><textarea id="b-msg" class="ym-disable-keys" name="message" maxlength="1500" placeholder="Что за продукт, что уже есть, что должно получиться"></textarea></div>
       </div>
       <input class="hp" id="b-site" name="website" type="text" tabindex="-1" autocomplete="off" aria-hidden="true">
       <div class="brief__out" id="brief-out" aria-live="polite"></div>
@@ -653,11 +683,16 @@ img{display:block}
       <h3>Ваши права</h3>
       <p>Вы можете узнать, какие ваши данные у нас есть, попросить исправить или удалить их и отозвать согласие. Для этого напишите на sumuraidesign@yandex.ru.</p>
       <h3>Cookies и сторонние сервисы</h3>
-      <p>Сайт не ставит cookies и не использует счётчики аналитики. Шрифты загружаются с Google Fonts.</p>
+      <p>Сайт использует Яндекс Метрику, включая Вебвизор. Она ставит cookies и собирает обезличенные сведения о посещении: какие страницы открыты, действия на сайте, тип устройства и браузера, примерный регион. Эти данные обрабатывает Яндекс, нам они нужны, чтобы понимать, как сайтом пользуются. То, что вы вводите в поля формы, Вебвизор не записывает. Отказаться от cookies можно в настройках браузера.</p>
+      <p>Шрифты загружаются с Google Fonts.</p>
       <p>Редакция от 6 октября 2026 года.</p>
     </div>
     <div class="modal__foot"><button class="btn" type="button" data-close>Понятно</button></div>
   </div>
+</div>
+<div class="cookie" id="cookie" role="region" aria-label="Уведомление о cookies" hidden>
+  <span>Сайт использует cookies и Яндекс Метрику, чтобы понимать, как им пользуются.</span>
+  <div class="cookie__row"><button class="linkbtn" type="button" data-policy>Подробнее</button><button class="btn" type="button" id="cookie-ok">Ок</button></div>
 </div>
 <div class="toast" id="toast" role="status"></div>
 
@@ -785,7 +820,7 @@ img{display:block}
     var v=data(), c=$('#b-contact'), r=send.getBoundingClientRect();
     if(!v.contact){c.classList.remove('bad');void c.offsetWidth;c.classList.add('bad');c.focus();say('Напишите, куда вам ответить');return}
     if(!$('#b-agree').checked){var ag=$('#agree');ag.classList.remove('bad');void ag.offsetWidth;ag.classList.add('bad');say('Отметьте согласие на обработку данных');return}
-    function done(){form.classList.add('is-sent');out.innerHTML='Заявка улетела. <span class="lime">Скоро ответим</span>';burst(r.left+r.width/2,r.top,22)}
+    function done(){if(window.ym)ym(113524444,'reachGoal','lead');form.classList.add('is-sent');out.innerHTML='Заявка улетела. <span class="lime">Скоро ответим</span>';burst(r.left+r.width/2,r.top,22)}
     function fail(){send.disabled=false;out.textContent='Не получилось отправить. Проверьте интернет и попробуйте ещё раз.'}
     if(!ENDPOINT){
       /* пока таблица не подключена, заявка никуда не уходит: копируем текст, чтобы его можно было отправить вручную */
@@ -806,6 +841,12 @@ img{display:block}
   modal.addEventListener('click',function(e){if(e.target===modal)closePolicy()});
   d.addEventListener('keydown',function(e){if(e.key==='Escape'&&!modal.hidden)closePolicy()});
   $('#b-agree').addEventListener('change',function(){$('#agree').classList.remove('bad')});
+
+  /* уведомление о cookies: только там, где подключена Метрика */
+  (function(){var c=$('#cookie'),seen=false; try{seen=localStorage.getItem('cookie-ok')==='1'}catch(e){}
+    if(!window.ym||seen) return; c.hidden=false; setTimeout(function(){c.classList.add('on')},1200);
+    $('#cookie-ok').addEventListener('click',function(){try{localStorage.setItem('cookie-ok','1')}catch(e){} c.classList.remove('on'); setTimeout(function(){c.hidden=true},400)});
+  })();
 
   /* почта: копируем адрес по клику — ссылка mailto срабатывает не везде */
   $$('[data-copy]').forEach(function(a){a.addEventListener('click',function(){if(navigator.clipboard&&navigator.clipboard.writeText)navigator.clipboard.writeText(a.dataset.copy).then(function(){say('Почта скопирована')},function(){})})});
